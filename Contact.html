@@ -1,656 +1,840 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Contact Us | Modern Bootstrap Website</title>
     <!-- Bootstrap 5 CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
     <!-- Bootstrap Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css"
+    />
     <style>
-        :root {
-            --primary-color: #4361ee;
-            --secondary-color: #3a0ca3;
-            --accent-color: #7209b7;
-            --light-color: #f8f9fa;
-            --dark-color: #212529;
+      :root {
+        --primary-color: #4361ee;
+        --secondary-color: #3a0ca3;
+        --accent-color: #7209b7;
+        --light-color: #f8f9fa;
+        --dark-color: #212529;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        color: #333;
+        padding-top: 80px;
+        background-color: #f8f9fa;
+      }
+
+      .navbar {
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        background-color: white !important;
+      }
+
+      .nav-link {
+        font-weight: 500;
+        position: relative;
+        padding: 0.5rem 1rem !important;
+        margin: 0 0.2rem;
+        border-radius: 50px;
+      }
+
+      .nav-link:hover {
+        background-color: rgba(67, 97, 238, 0.1);
+      }
+
+      .nav-link.active {
+        background-color: var(--primary-color);
+        color: white !important;
+      }
+
+      .contact-hero {
+        background: linear-gradient(
+          135deg,
+          var(--primary-color),
+          var(--secondary-color)
+        );
+        color: white;
+        padding: 4rem 0;
+        margin-bottom: 3rem;
+        border-radius: 15px;
+      }
+
+      .contact-form {
+        background: white;
+        border-radius: 15px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        padding: 2.5rem;
+      }
+
+      .form-label {
+        font-weight: 500;
+        margin-bottom: 0.5rem;
+        color: #495057;
+      }
+
+      .form-control {
+        padding: 0.75rem 1rem;
+        border: 2px solid #e9ecef;
+        border-radius: 10px;
+        transition: all 0.3s;
+      }
+
+      .form-control:focus {
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 0.25rem rgba(67, 97, 238, 0.15);
+      }
+
+      .form-control:hover {
+        border-color: #ced4da;
+      }
+
+      .btn-primary {
+        background-color: var(--primary-color);
+        border-color: var(--primary-color);
+        padding: 0.75rem 2rem;
+        font-weight: 600;
+        border-radius: 10px;
+        transition: all 0.3s;
+      }
+
+      .btn-primary:hover {
+        background-color: var(--secondary-color);
+        border-color: var(--secondary-color);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+      }
+
+      .contact-info-card {
+        background: white;
+        border-radius: 15px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        padding: 2rem;
+        height: 100%;
+        transition: transform 0.3s;
+      }
+
+      .contact-info-card:hover {
+        transform: translateY(-5px);
+      }
+
+      .contact-icon {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background: rgba(67, 97, 238, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1.5rem;
+        color: var(--primary-color);
+        font-size: 1.5rem;
+      }
+
+      .section-title {
+        position: relative;
+        padding-bottom: 1rem;
+        margin-bottom: 2rem;
+      }
+
+      .section-title::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 60px;
+        height: 4px;
+        background: var(--primary-color);
+        border-radius: 2px;
+      }
+
+      .section-title-center {
+        position: relative;
+        padding-bottom: 1rem;
+        margin-bottom: 2rem;
+        text-align: center;
+      }
+
+      .section-title-center::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 4px;
+        background: var(--primary-color);
+        border-radius: 2px;
+      }
+
+      .map-container {
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        height: 100%;
+      }
+
+      .form-step {
+        display: none;
+      }
+
+      .form-step.active {
+        display: block;
+        animation: fadeIn 0.5s;
+      }
+
+      .progress {
+        height: 10px;
+        margin-bottom: 2rem;
+        border-radius: 10px;
+      }
+
+      .success-message {
+        display: none;
+        text-align: center;
+        padding: 3rem;
+      }
+
+      .success-icon {
+        font-size: 4rem;
+        color: #28a745;
+        margin-bottom: 1.5rem;
+      }
+
+      .social-btn {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 0.5rem;
+        transition: all 0.3s;
+      }
+
+      .social-btn:hover {
+        transform: translateY(-3px);
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
         }
-        
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            color: #333;
-            padding-top: 80px;
-            background-color: #f8f9fa;
+        to {
+          opacity: 1;
+          transform: translateY(0);
         }
-        
-        .navbar {
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            background-color: white !important;
-        }    
-        
-        .nav-link {
-            font-weight: 500;
-            position: relative;
-            padding: 0.5rem 1rem !important;
-            margin: 0 0.2rem;
-            border-radius: 50px;
-        }
-        
-        .nav-link:hover {
-            background-color: rgba(67, 97, 238, 0.1);
-        }
-        
-        .nav-link.active {
-            background-color: var(--primary-color);
-            color: white !important;
-        }
-        
+      }
+
+      footer {
+        background-color: var(--dark-color);
+        color: white;
+        padding: 4rem 0 2rem;
+        margin-top: 4rem;
+      }
+
+      @media (max-width: 768px) {
         .contact-hero {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: white;
-            padding: 4rem 0;
-            margin-bottom: 3rem;
-            border-radius: 15px;
+          padding: 3rem 0;
         }
-        
+
         .contact-form {
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-            padding: 2.5rem;
+          padding: 1.5rem;
         }
-        
-        .form-label {
-            font-weight: 500;
-            margin-bottom: 0.5rem;
-            color: #495057;
+
+        .display-4 {
+          font-size: 2.5rem;
         }
-        
-        .form-control {
-            padding: 0.75rem 1rem;
-            border: 2px solid #e9ecef;
-            border-radius: 10px;
-            transition: all 0.3s;
-        }
-        
-        .form-control:focus {
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 0.25rem rgba(67, 97, 238, 0.15);
-        }
-        
-        .form-control:hover {
-            border-color: #ced4da;
-        }
-        
-        .btn-primary {
-            background-color: var(--primary-color);
-            border-color: var(--primary-color);
-            padding: 0.75rem 2rem;
-            font-weight: 600;
-            border-radius: 10px;
-            transition: all 0.3s;
-        }
-        
-        .btn-primary:hover {
-            background-color: var(--secondary-color);
-            border-color: var(--secondary-color);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-        }
-        
-        .contact-info-card {
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-            padding: 2rem;
-            height: 100%;
-            transition: transform 0.3s;
-        }
-        
-        .contact-info-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .contact-icon {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: rgba(67, 97, 238, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1.5rem;
-            color: var(--primary-color);
-            font-size: 1.5rem;
-        }
-        
-        .section-title {
-            position: relative;
-            padding-bottom: 1rem;
-            margin-bottom: 2rem;
-        }
-        
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 60px;
-            height: 4px;
-            background: var(--primary-color);
-            border-radius: 2px;
-        }
-        
-        .section-title-center {
-            position: relative;
-            padding-bottom: 1rem;
-            margin-bottom: 2rem;
-            text-align: center;
-        }
-        
-        .section-title-center::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 4px;
-            background: var(--primary-color);
-            border-radius: 2px;
-        }
-        
-        .map-container {
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-            height: 100%;
-        }
-        
-        .form-step {
-            display: none;
-        }
-        
-        .form-step.active {
-            display: block;
-            animation: fadeIn 0.5s;
-        }
-        
-        .progress {
-            height: 10px;
-            margin-bottom: 2rem;
-            border-radius: 10px;
-        }
-        
-        .success-message {
-            display: none;
-            text-align: center;
-            padding: 3rem;
-        }
-        
-        .success-icon {
-            font-size: 4rem;
-            color: #28a745;
-            margin-bottom: 1.5rem;
-        }
-        
-        .social-btn {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 0.5rem;
-            transition: all 0.3s;
-        }
-        
-        .social-btn:hover {
-            transform: translateY(-3px);
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        footer {
-            background-color: var(--dark-color);
-            color: white;
-            padding: 4rem 0 2rem;
-            margin-top: 4rem;
-        }
-        
-        @media (max-width: 768px) {
-            .contact-hero {
-                padding: 3rem 0;
-            }
-            
-            .contact-form {
-                padding: 1.5rem;
-            }
-            
-            .display-4 {
-                font-size: 2.5rem;
-            }
-        }
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top">
-        <div class="container">
-      <a class="navbar-brand fw-bold" href="Home.html">
-                <i class="bi bi-rocket-takeoff me-2"></i>KeshavSoft
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="Home.html">Home</a>
-                    </li>
-                   <li class="nav-item">
-                       <a class="nav-link" href="About.html">About</a>
-                   </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="Contact.html">Contact</a>
-                    </li>
-                </ul>
-
-            </div>
+      <div class="container">
+        <a class="navbar-brand fw-bold" href="Index.html">
+          <i class="bi bi-rocket-takeoff me-2"></i>KeshavSoft
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="Home.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="About.html">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="Contact.html">Contact</a>
+            </li>
+          </ul>
         </div>
+      </div>
     </nav>
 
     <main class="container my-5">
-        <!-- Hero Section -->
-        <section class="contact-hero mb-5">
-            <div class="container text-center">
-                <h1 class="display-4 fw-bold mb-3">Get in Touch</h1>
-                <p class="lead mb-4">We'd love to hear from you. Let's start a conversation.</p>
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb justify-content-center">
-                        <li class="breadcrumb-item"><a href="Home.html" class="text-white">Home</a></li>
-                        <li class="breadcrumb-item active text-white-50" aria-current="page">Contact</li>
-                    </ol>
-                </nav>
-            </div>
-        </section>
-
-        <!-- Contact Info -->
-        <section class="row mb-5">
-            <div class="col-md-4 mb-4">
-                <div class="contact-info-card text-center">
-                    <div class="contact-icon mx-auto">
-                        <i class="bi bi-telephone"></i>
-                    </div>
-                    <h5>Phone</h5>
-                    <p class="text-muted">+91 6203415869</p>
-                    <p class="text-muted">Mon-Fri: 9am-5pm</p>
-                </div>
-            </div>
-            <div class="col-md-4 mb-4">
-                <div class="contact-info-card text-center">
-                    <div class="contact-icon mx-auto">
-                        <i class="bi bi-envelope"></i>
-                    </div>
-                    <h5>Email</h5>
-                    <p class="text-muted">info@KeshavSoft.com</p>
-                    <p class="text-muted">support@KeshavSoft.com</p>
-                </div>
-            </div>
-            <div class="col-md-4 mb-4">
-                <div class="contact-info-card text-center">
-                    <div class="contact-icon mx-auto">
-                        <i class="bi bi-geo-alt"></i>
-                    </div>
-                    <h5>Office</h5>
-                    <p class="text-muted">123 Business Ave</p>
-                    <p class="text-muted">Andhra Pradesh 10001</p>
-                </div>
-            </div>
-        </section>
-
-        <div class="row">
-            <!-- Contact Form -->
-            <div class="col-lg-8 mb-5">
-                <div class="contact-form">
-                    <h3 class="section-title">Send us a Message</h3>
-                    
-                    <!-- Progress Bar -->
-                    <div class="progress">
-                        <div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                    
-                    <!-- Success Message -->
-                    <div class="success-message" id="successMessage">
-                        <i class="bi bi-check-circle-fill success-icon"></i>
-                        <h3>Thank You!</h3>
-                        <p class="lead">Your message has been sent successfully. We'll get back to you within 24 hours.</p>
-                        <button class="btn btn-primary mt-3" id="newMessageBtn">Send Another Message</button>
-                    </div>
-                    
-                    <!-- Multi-step Form -->
-                    <form id="contactForm">
-                        <!-- Step 1: Personal Info -->
-                        <div class="form-step active" id="step1">
-                            <div class="row">
-                                <div class="col-md-6 mb-3">
-                                    <label for="firstName" class="form-label">First Name *</label>
-                                    <input type="text" class="form-control" id="firstName" placeholder="Your first name" required>
-                                    <div class="invalid-feedback">Please provide your first name.</div>
-                                </div>
-                                <div class="col-md-6 mb-3">
-                                    <label for="lastName" class="form-label">Last Name *</label>
-                                    <input type="text" class="form-control" id="lastName" placeholder="Your last name" required>
-                                    <div class="invalid-feedback">Please provide your last name.</div>
-                                </div>
-                            </div>
-                            <div class="mb-3">
-                                <label for="email" class="form-label">Email Address *</label>
-                                <input type="email" class="form-control" id="email" placeholder="your.email@example.com" required>
-                                <div class="invalid-feedback">Please provide a valid email address.</div>
-                            </div>
-                            <div class="mb-3">
-                                <label for="phone" class="form-label">Phone Number</label>
-                                <input type="tel" class="form-control" id="phone" placeholder="+91 9334398684">
-                            </div>
-                            <div class="d-flex justify-content-end">
-                                <button type="button" class="btn btn-primary" id="nextToStep2">Next <i class="bi bi-arrow-right ms-2"></i></button>
-                            </div>
-                        </div>
-                        
-                        <!-- Step 2: Message Details -->
-                        <div class="form-step" id="step2">
-                            <div class="mb-3">
-                                <label for="subject" class="form-label">Subject *</label>
-                                <select class="form-select" id="subject" required>
-                                    <option value="" selected disabled>Select a subject</option>
-                                    <option value="general">General Inquiry</option>
-                                    <option value="support">Technical Support</option>
-                                    <option value="billing">Billing Question</option>
-                                    <option value="partnership">Partnership Opportunity</option>
-                                    <option value="other">Other</option>
-                                </select>
-                                <div class="invalid-feedback">Please select a subject.</div>
-                            </div>
-                            <div class="mb-3">
-                                <label for="message" class="form-label">Message *</label>
-                                <textarea class="form-control" id="message" rows="5" placeholder="How can we help you?" required></textarea>
-                                <div class="form-text">Please provide detailed information so we can assist you better.</div>
-                                <div class="invalid-feedback">Please provide your message.</div>
-                            </div>
-                            <div class="mb-3">
-                                <label for="file" class="form-label">Attachment (Optional)</label>
-                                <input type="file" class="form-control" id="file">
-                                <div class="form-text">Max file size: 5MB. Supported formats: PDF, JPG, PNG.</div>
-                            </div>
-                            <div class="d-flex justify-content-between">
-                                <button type="button" class="btn btn-outline-secondary" id="backToStep1"><i class="bi bi-arrow-left me-2"></i> Back</button>
-                                <button type="submit" class="btn btn-primary">Send Message</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-            
-            <!-- Map and Additional Info -->
-      <div class="col-lg-4">
-  <div class="map-container mb-4">
-    <iframe 
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15901934.570938028!2d72.1548962330193!3d15.912899829839218!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a4c9bc1b3ed31a5%3A0x28f1b2f9b8e9c3c1!2sAndhra%20Pradesh!5e0!3m2!1sen!2sin!4v1726589735286!5m2!1sen!2sin" 
-      width="100%" 
-      height="300" 
-      style="border:0;" 
-      allowfullscreen="" 
-      loading="lazy" 
-      referrerpolicy="no-referrer-when-downgrade">
-    </iframe>
-  </div>
-</div>
-
+      <!-- Hero Section -->
+      <section class="contact-hero mb-5">
+        <div class="container text-center">
+          <h1 class="display-4 fw-bold mb-3">Get in Touch</h1>
+          <p class="lead mb-4">
+            We'd love to hear from you. Let's start a conversation.
+          </p>
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb justify-content-center">
+              <li class="breadcrumb-item">
+                <a href="Index.html" class="text-white">Home</a>
+              </li>
+              <li
+                class="breadcrumb-item active text-white-50"
+                aria-current="page"
+              >
+                Contact
+              </li>
+            </ol>
+          </nav>
         </div>
+      </section>
+
+      <!-- Contact Info -->
+      <section class="row mb-5">
+        <div class="col-md-4 mb-4">
+          <div class="contact-info-card text-center">
+            <div class="contact-icon mx-auto">
+              <i class="bi bi-telephone"></i>
+            </div>
+            <h5>Phone</h5>
+            <p class="text-muted">+91 6203415869</p>
+            <p class="text-muted">Mon-Fri: 9am-5pm</p>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="contact-info-card text-center">
+            <div class="contact-icon mx-auto">
+              <i class="bi bi-envelope"></i>
+            </div>
+            <h5>Email</h5>
+            <p class="text-muted">info@KeshavSoft.com</p>
+            <p class="text-muted">support@KeshavSoft.com</p>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="contact-info-card text-center">
+            <div class="contact-icon mx-auto">
+              <i class="bi bi-geo-alt"></i>
+            </div>
+            <h5>Office</h5>
+            <p class="text-muted">123 Business Ave</p>
+            <p class="text-muted">Andhra Pradesh 10001</p>
+          </div>
+        </div>
+      </section>
+
+      <div class="row">
+        <!-- Contact Form -->
+        <div class="col-lg-8 mb-5">
+          <div class="contact-form">
+            <h3 class="section-title">Send us a Message</h3>
+
+            <!-- Progress Bar -->
+            <div class="progress">
+              <div
+                class="progress-bar"
+                role="progressbar"
+                style="width: 0%"
+                aria-valuenow="0"
+                aria-valuemin="0"
+                aria-valuemax="100"
+              ></div>
+            </div>
+
+            <!-- Success Message -->
+            <div class="success-message" id="successMessage">
+              <i class="bi bi-check-circle-fill success-icon"></i>
+              <h3>Thank You!</h3>
+              <p class="lead">
+                Your message has been sent successfully. We'll get back to you
+                within 24 hours.
+              </p>
+              <button class="btn btn-primary mt-3" id="newMessageBtn">
+                Send Another Message
+              </button>
+            </div>
+
+            <!-- Multi-step Form -->
+            <form id="contactForm">
+              <!-- Step 1: Personal Info -->
+              <div class="form-step active" id="step1">
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <label for="firstName" class="form-label"
+                      >First Name *</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="firstName"
+                      placeholder="Your first name"
+                      required
+                    />
+                    <div class="invalid-feedback">
+                      Please provide your first name.
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label for="lastName" class="form-label">Last Name *</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="lastName"
+                      placeholder="Your last name"
+                      required
+                    />
+                    <div class="invalid-feedback">
+                      Please provide your last name.
+                    </div>
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label for="email" class="form-label">Email Address *</label>
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="email"
+                    placeholder="your.email@example.com"
+                    required
+                  />
+                  <div class="invalid-feedback">
+                    Please provide a valid email address.
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label for="phone" class="form-label">Phone Number</label>
+                  <input
+                    type="tel"
+                    class="form-control"
+                    id="phone"
+                    placeholder="+91 9334398684"
+                  />
+                </div>
+                <div class="d-flex justify-content-end">
+                  <button
+                    type="button"
+                    class="btn btn-primary"
+                    id="nextToStep2"
+                  >
+                    Next <i class="bi bi-arrow-right ms-2"></i>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Step 2: Message Details -->
+              <div class="form-step" id="step2">
+                <div class="mb-3">
+                  <label for="subject" class="form-label">Subject *</label>
+                  <select class="form-select" id="subject" required>
+                    <option value="" selected disabled>Select a subject</option>
+                    <option value="general">General Inquiry</option>
+                    <option value="support">Technical Support</option>
+                    <option value="billing">Billing Question</option>
+                    <option value="partnership">Partnership Opportunity</option>
+                    <option value="other">Other</option>
+                  </select>
+                  <div class="invalid-feedback">Please select a subject.</div>
+                </div>
+                <div class="mb-3">
+                  <label for="message" class="form-label">Message *</label>
+                  <textarea
+                    class="form-control"
+                    id="message"
+                    rows="5"
+                    placeholder="How can we help you?"
+                    required
+                  ></textarea>
+                  <div class="form-text">
+                    Please provide detailed information so we can assist you
+                    better.
+                  </div>
+                  <div class="invalid-feedback">
+                    Please provide your message.
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label for="file" class="form-label"
+                    >Attachment (Optional)</label
+                  >
+                  <input type="file" class="form-control" id="file" />
+                  <div class="form-text">
+                    Max file size: 5MB. Supported formats: PDF, JPG, PNG.
+                  </div>
+                </div>
+                <div class="d-flex justify-content-between">
+                  <button
+                    type="button"
+                    class="btn btn-outline-secondary"
+                    id="backToStep1"
+                  >
+                    <i class="bi bi-arrow-left me-2"></i> Back
+                  </button>
+                  <button type="submit" class="btn btn-primary">
+                    Send Message
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- Map and Additional Info -->
+        <div class="col-lg-4">
+          <div class="map-container mb-4">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15901934.570938028!2d72.1548962330193!3d15.912899829839218!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a4c9bc1b3ed31a5%3A0x28f1b2f9b8e9c3c1!2sAndhra%20Pradesh!5e0!3m2!1sen!2sin!4v1726589735286!5m2!1sen!2sin"
+              width="100%"
+              height="300"
+              style="border: 0"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            >
+            </iframe>
+          </div>
+        </div>
+      </div>
     </main>
 
     <!-- FAQ Section -->
     <section class="bg-light py-5 mt-5">
-        <div class="container">
-            <h2 class="text-center section-title-center mb-5">Frequently Asked Questions</h2>
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <div class="accordion" id="faqAccordion">
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="faqHeading1">
-                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1" aria-expanded="true" aria-controls="faq1">
-                                    How long does it take to get a response?
-                                </button>
-                            </h2>
-                            <div id="faq1" class="accordion-collapse collapse show" aria-labelledby="faqHeading1" data-bs-parent="#faqAccordion">
-                                <div class="accordion-body">
-                                    We typically respond to all inquiries within 24 hours during business days. For urgent matters, please call our customer service line.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="faqHeading2">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2" aria-expanded="false" aria-controls="faq2">
-                                    What information should I include in my message?
-                                </button>
-                            </h2>
-                            <div id="faq2" class="accordion-collapse collapse" aria-labelledby="faqHeading2" data-bs-parent="#faqAccordion">
-                                <div class="accordion-body">
-                                    Please include your name, contact information, and a detailed description of your inquiry. The more information you provide, the better we can assist you.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="faqHeading3">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3" aria-expanded="false" aria-controls="faq3">
-                                    Do you offer support for your products?
-                                </button>
-                            </h2>
-                            <div id="faq3" class="accordion-collapse collapse" aria-labelledby="faqHeading3" data-bs-parent="#faqAccordion">
-                                <div class="accordion-body">
-                                    Yes, we offer comprehensive support for all our products. Please select "Technical Support" as your subject when contacting us for faster assistance.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+      <div class="container">
+        <h2 class="text-center section-title-center mb-5">
+          Frequently Asked Questions
+        </h2>
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            <div class="accordion" id="faqAccordion">
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="faqHeading1">
+                  <button
+                    class="accordion-button"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#faq1"
+                    aria-expanded="true"
+                    aria-controls="faq1"
+                  >
+                    How long does it take to get a response?
+                  </button>
+                </h2>
+                <div
+                  id="faq1"
+                  class="accordion-collapse collapse show"
+                  aria-labelledby="faqHeading1"
+                  data-bs-parent="#faqAccordion"
+                >
+                  <div class="accordion-body">
+                    We typically respond to all inquiries within 24 hours during
+                    business days. For urgent matters, please call our customer
+                    service line.
+                  </div>
                 </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="faqHeading2">
+                  <button
+                    class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#faq2"
+                    aria-expanded="false"
+                    aria-controls="faq2"
+                  >
+                    What information should I include in my message?
+                  </button>
+                </h2>
+                <div
+                  id="faq2"
+                  class="accordion-collapse collapse"
+                  aria-labelledby="faqHeading2"
+                  data-bs-parent="#faqAccordion"
+                >
+                  <div class="accordion-body">
+                    Please include your name, contact information, and a
+                    detailed description of your inquiry. The more information
+                    you provide, the better we can assist you.
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="faqHeading3">
+                  <button
+                    class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#faq3"
+                    aria-expanded="false"
+                    aria-controls="faq3"
+                  >
+                    Do you offer support for your products?
+                  </button>
+                </h2>
+                <div
+                  id="faq3"
+                  class="accordion-collapse collapse"
+                  aria-labelledby="faqHeading3"
+                  data-bs-parent="#faqAccordion"
+                >
+                  <div class="accordion-body">
+                    Yes, we offer comprehensive support for all our products.
+                    Please select "Technical Support" as your subject when
+                    contacting us for faster assistance.
+                  </div>
+                </div>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Emergency Contact Section -->
     <section class="container my-5">
-        <div class="alert alert-warning">
-            <div class="d-flex">
-                <div class="me-3">
-                    <i class="bi bi-exclamation-triangle display-4"></i>
-                </div>
-                <div>
-                    <h4>Need Immediate Assistance?</h4>
-                    <p class="mb-1">For urgent matters outside business hours, please call our emergency support line:</p>
-                    <h5 class="mb-0">+91 (9999) EMERGENCY</h5>
-                    <small>Available 24/7 for critical issues</small>
-                </div>
-            </div>
+      <div class="alert alert-warning">
+        <div class="d-flex">
+          <div class="me-3">
+            <i class="bi bi-exclamation-triangle display-4"></i>
+          </div>
+          <div>
+            <h4>Need Immediate Assistance?</h4>
+            <p class="mb-1">
+              For urgent matters outside business hours, please call our
+              emergency support line:
+            </p>
+            <h5 class="mb-0">+91 (9999) EMERGENCY</h5>
+            <small>Available 24/7 for critical issues</small>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4 mb-4">
-                    <h5 class="fw-bold">KeshavSoft</h5>
-                    <p>Creating solutions that make your life easier and more productive.</p>
-                    <div class="d-flex">
-                        <a href="#" class="text-white me-3"><i class="bi bi-facebook"></i></a>
-                        <a href="#" class="text-white me-3"><i class="bi bi-twitter"></i></a>
-                        <a href="#" class="text-white me-3"><i class="bi bi-instagram"></i></a>
-                        <a href="#" class="text-white"><i class="bi bi-linkedin"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-4 mb-4">
-                    <h5 class="fw-bold">Company</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="#" class="text-white text-decoration-none">About Us</a></li>
-                        <li><a href="#" class="text-white text-decoration-none">Services</a></li>
-                        <li><a href="#" class="text-white text-decoration-none">Team</a></li>
-                        <li><a href="#" class="text-white text-decoration-none">Careers</a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-2 col-md-4 mb-4">
-                    <h5 class="fw-bold">Resources</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="#" class="text-white text-decoration-none">Blog</a></li>
-                        <li><a href="#" class="text-white text-decoration-none">FAQ</a></li>
-                        <li><a href="#" class="text-white text-decoration-none">Support</a></li>
-                        <li><a href="#" class="text-white text-decoration-none">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-4 col-md-4 mb-4">
-                    <h5 class="fw-bold">Subscribe to Our Newsletter</h5>
-                    <p>Stay updated with our latest news and offers.</p>
-                    <div class="input-group">
-                        <input type="email" class="form-control" placeholder="Your email address">
-                        <button class="btn btn-primary">Subscribe</button>
-                    </div>
-                </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4 mb-4">
+            <h5 class="fw-bold">KeshavSoft</h5>
+            <p>
+              Creating solutions that make your life easier and more productive.
+            </p>
+            <div class="d-flex">
+              <a href="#" class="text-white me-3"
+                ><i class="bi bi-facebook"></i
+              ></a>
+              <a href="#" class="text-white me-3"
+                ><i class="bi bi-twitter"></i
+              ></a>
+              <a href="#" class="text-white me-3"
+                ><i class="bi bi-instagram"></i
+              ></a>
+              <a href="#" class="text-white"><i class="bi bi-linkedin"></i></a>
             </div>
-            <hr class="mt-4">
-            <div class="row">
-                <div class="col-md-6 mb-3">
- <p class="mb-0">&copy; 2025 KeshavSoft. All rights reserved.</p>
-                </div>
-                <div class="col-md-6 text-md-end mb-3">
-                    <a href="#" class="text-white text-decoration-none me-3">Privacy Policy</a>
-                    <a href="#" class="text-white text-decoration-none me-3">Terms of Service</a>
-                    <a href="#" class="text-white text-decoration-none">Cookie Policy</a>
-                </div>
+          </div>
+          <div class="col-lg-2 col-md-4 mb-4">
+            <h5 class="fw-bold">Company</h5>
+            <ul class="list-unstyled">
+              <li>
+                <a href="#" class="text-white text-decoration-none">About Us</a>
+              </li>
+              <li>
+                <a href="#" class="text-white text-decoration-none">Services</a>
+              </li>
+              <li>
+                <a href="#" class="text-white text-decoration-none">Team</a>
+              </li>
+              <li>
+                <a href="#" class="text-white text-decoration-none">Careers</a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-lg-2 col-md-4 mb-4">
+            <h5 class="fw-bold">Resources</h5>
+            <ul class="list-unstyled">
+              <li>
+                <a href="#" class="text-white text-decoration-none">Blog</a>
+              </li>
+              <li>
+                <a href="#" class="text-white text-decoration-none">FAQ</a>
+              </li>
+              <li>
+                <a href="#" class="text-white text-decoration-none">Support</a>
+              </li>
+              <li>
+                <a href="#" class="text-white text-decoration-none">Contact</a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-lg-4 col-md-4 mb-4">
+            <h5 class="fw-bold">Subscribe to Our Newsletter</h5>
+            <p>Stay updated with our latest news and offers.</p>
+            <div class="input-group">
+              <input
+                type="email"
+                class="form-control"
+                placeholder="Your email address"
+              />
+              <button class="btn btn-primary">Subscribe</button>
             </div>
+          </div>
         </div>
+        <hr class="mt-4" />
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <p class="mb-0">&copy; 2025 KeshavSoft. All rights reserved.</p>
+          </div>
+          <div class="col-md-6 text-md-end mb-3">
+            <a href="#" class="text-white text-decoration-none me-3"
+              >Privacy Policy</a
+            >
+            <a href="#" class="text-white text-decoration-none me-3"
+              >Terms of Service</a
+            >
+            <a href="#" class="text-white text-decoration-none"
+              >Cookie Policy</a
+            >
+          </div>
+        </div>
+      </div>
     </footer>
 
     <!-- Bootstrap 5 JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    
+
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Form steps functionality
-            const step1 = document.getElementById('step1');
-            const step2 = document.getElementById('step2');
-            const nextBtn = document.getElementById('nextToStep2');
-            const backBtn = document.getElementById('backToStep1');
-            const progressBar = document.querySelector('.progress-bar');
-            const successMessage = document.getElementById('successMessage');
-            const contactForm = document.getElementById('contactForm');
-            const newMessageBtn = document.getElementById('newMessageBtn');
-            
-            // Next button click
-            nextBtn.addEventListener('click', function() {
-                // Validate step 1
-                const firstName = document.getElementById('firstName');
-                const lastName = document.getElementById('lastName');
-                const email = document.getElementById('email');
-                
-                let isValid = true;
-                
-                if (!firstName.value) {
-                    firstName.classList.add('is-invalid');
-                    isValid = false;
-                } else {
-                    firstName.classList.remove('is-invalid');
-                }
-                
-                if (!lastName.value) {
-                    lastName.classList.add('is-invalid');
-                    isValid = false;
-                } else {
-                    lastName.classList.remove('is-invalid');
-                }
-                
-                if (!email.value || !email.checkValidity()) {
-                    email.classList.add('is-invalid');
-                    isValid = false;
-                } else {
-                    email.classList.remove('is-invalid');
-                }
-                
-                if (isValid) {
-                    step1.classList.remove('active');
-                    step2.classList.add('active');
-                    progressBar.style.width = '50%';
-                }
-            });
-            
-            // Back button click
-            backBtn.addEventListener('click', function() {
-                step2.classList.remove('active');
-                step1.classList.add('active');
-                progressBar.style.width = '0%';
-            });
-            
-            // Form submission
-            contactForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                // Validate step 2
-                const subject = document.getElementById('subject');
-                const message = document.getElementById('message');
-                
-                let isValid = true;
-                
-                if (!subject.value) {
-                    subject.classList.add('is-invalid');
-                    isValid = false;
-                } else {
-                    subject.classList.remove('is-invalid');
-                }
-                
-                if (!message.value) {
-                    message.classList.add('is-invalid');
-                    isValid = false;
-                } else {
-                    message.classList.remove('is-invalid');
-                }
-                
-                if (isValid) {
-                    // In a real application, you would submit the form data to a server here
-                    // For this example, we'll just show the success message
-                    contactForm.style.display = 'none';
-                    successMessage.style.display = 'block';
-                    progressBar.style.width = '100%';
-                }
-            });
-            
-            // New message button
-            newMessageBtn.addEventListener('click', function() {
-                contactForm.reset();
-                contactForm.style.display = 'block';
-                successMessage.style.display = 'none';
-                step2.classList.remove('active');
-                step1.classList.add('active');
-                progressBar.style.width = '0%';
-                
-                // Remove validation classes
-                document.querySelectorAll('.is-invalid').forEach(el => {
-                    el.classList.remove('is-invalid');
-                });
-            });
-            
-            // Real-time validation
-            document.querySelectorAll('input, textarea, select').forEach(input => {
-                input.addEventListener('input', function() {
-                    if (this.classList.contains('is-invalid')) {
-                        this.classList.remove('is-invalid');
-                    }
-                });
-            });
+      document.addEventListener("DOMContentLoaded", function () {
+        // Form steps functionality
+        const step1 = document.getElementById("step1");
+        const step2 = document.getElementById("step2");
+        const nextBtn = document.getElementById("nextToStep2");
+        const backBtn = document.getElementById("backToStep1");
+        const progressBar = document.querySelector(".progress-bar");
+        const successMessage = document.getElementById("successMessage");
+        const contactForm = document.getElementById("contactForm");
+        const newMessageBtn = document.getElementById("newMessageBtn");
+
+        // Next button click
+        nextBtn.addEventListener("click", function () {
+          // Validate step 1
+          const firstName = document.getElementById("firstName");
+          const lastName = document.getElementById("lastName");
+          const email = document.getElementById("email");
+
+          let isValid = true;
+
+          if (!firstName.value) {
+            firstName.classList.add("is-invalid");
+            isValid = false;
+          } else {
+            firstName.classList.remove("is-invalid");
+          }
+
+          if (!lastName.value) {
+            lastName.classList.add("is-invalid");
+            isValid = false;
+          } else {
+            lastName.classList.remove("is-invalid");
+          }
+
+          if (!email.value || !email.checkValidity()) {
+            email.classList.add("is-invalid");
+            isValid = false;
+          } else {
+            email.classList.remove("is-invalid");
+          }
+
+          if (isValid) {
+            step1.classList.remove("active");
+            step2.classList.add("active");
+            progressBar.style.width = "50%";
+          }
         });
+
+        // Back button click
+        backBtn.addEventListener("click", function () {
+          step2.classList.remove("active");
+          step1.classList.add("active");
+          progressBar.style.width = "0%";
+        });
+
+        // Form submission
+        contactForm.addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          // Validate step 2
+          const subject = document.getElementById("subject");
+          const message = document.getElementById("message");
+
+          let isValid = true;
+
+          if (!subject.value) {
+            subject.classList.add("is-invalid");
+            isValid = false;
+          } else {
+            subject.classList.remove("is-invalid");
+          }
+
+          if (!message.value) {
+            message.classList.add("is-invalid");
+            isValid = false;
+          } else {
+            message.classList.remove("is-invalid");
+          }
+
+          if (isValid) {
+            // In a real application, you would submit the form data to a server here
+            // For this example, we'll just show the success message
+            contactForm.style.display = "none";
+            successMessage.style.display = "block";
+            progressBar.style.width = "100%";
+          }
+        });
+
+        // New message button
+        newMessageBtn.addEventListener("click", function () {
+          contactForm.reset();
+          contactForm.style.display = "block";
+          successMessage.style.display = "none";
+          step2.classList.remove("active");
+          step1.classList.add("active");
+          progressBar.style.width = "0%";
+
+          // Remove validation classes
+          document.querySelectorAll(".is-invalid").forEach((el) => {
+            el.classList.remove("is-invalid");
+          });
+        });
+
+        // Real-time validation
+        document
+          .querySelectorAll("input, textarea, select")
+          .forEach((input) => {
+            input.addEventListener("input", function () {
+              if (this.classList.contains("is-invalid")) {
+                this.classList.remove("is-invalid");
+              }
+            });
+          });
+      });
     </script>
-</body>
+  </body>
 </html>
